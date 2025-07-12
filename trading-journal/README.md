@@ -1,4 +1,4 @@
-# Trading Journal - Personal F&O Trade Tracker
+# Trading Pusthak - Personal F&O Trade Tracker
 
 A comprehensive full-stack web application for tracking Futures and Options (F&O) trades with analytics, strategy insights, and trading psychology journaling.
 
@@ -62,7 +62,7 @@ A comprehensive full-stack web application for tracking Futures and Options (F&O
 1. **Clone the repository**
    ```bash
    git clone <repository-url>
-   cd trading-journal
+   cd trading-pusthak
    ```
 
 2. **Install dependencies**

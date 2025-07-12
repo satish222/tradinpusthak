@@ -99,7 +99,7 @@ export function Dashboard() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-white">Dashboard</h1>
-          <p className="text-gray-400">Welcome back, {session?.user?.name}</p>
+          <p className="text-gray-400">Welcome back to Trading Pusthak, {session?.user?.name}</p>
         </div>
         <div className="text-right">
           <p className="text-sm text-gray-400">Last updated</p>

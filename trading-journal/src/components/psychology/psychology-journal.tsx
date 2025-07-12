@@ -148,7 +148,7 @@ export function PsychologyJournal() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-white">Psychology Journal</h1>
+          <h1 className="text-2xl font-bold text-white">Psychology Pusthak</h1>
           <p className="text-gray-400">Track your trading mindset and emotional patterns</p>
         </div>
         <button
@@ -196,10 +196,10 @@ export function PsychologyJournal() {
       {/* Add Entry Form */}
       {showForm && (
         <div className="bg-gray-900 rounded-2xl p-6 border border-gray-800">
-          <h2 className="text-lg font-semibold text-white mb-4 flex items-center">
-            <Brain className="h-5 w-5 mr-2 text-purple-500" />
-            New Psychology Entry
-          </h2>
+                      <h2 className="text-lg font-semibold text-white mb-4 flex items-center">
+              <Brain className="h-5 w-5 mr-2 text-purple-500" />
+              New Psychology Pusthak Entry
+            </h2>
           
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -356,7 +356,7 @@ export function PsychologyJournal() {
 
       {/* Entries List */}
       <div className="space-y-4">
-        <h3 className="text-lg font-semibold text-white">Recent Entries</h3>
+        <h3 className="text-lg font-semibold text-white">Recent Pusthak Entries</h3>
         {entries.map((entry) => (
           <div key={entry.id} className="bg-gray-900 rounded-2xl p-6 border border-gray-800">
             <div className="flex items-start justify-between mb-4">

@@ -12,7 +12,7 @@ export function LoginPage() {
             <TrendingUp className="h-16 w-16 text-green-500" />
           </div>
           <h2 className="mt-6 text-3xl font-bold text-white">
-            Trading Journal
+            Trading Pusthak
           </h2>
           <p className="mt-2 text-gray-400">
             Track your F&O trades with analytics and psychology insights

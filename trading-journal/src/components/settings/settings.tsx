@@ -92,7 +92,7 @@ export function Settings() {
     const url = window.URL.createObjectURL(blob)
     const a = document.createElement("a")
     a.href = url
-    a.download = `trading-journal-export-${new Date().toISOString().split('T')[0]}.json`
+    a.download = `trading-pusthak-export-${new Date().toISOString().split('T')[0]}.json`
     a.click()
   }
 
@@ -132,7 +132,7 @@ export function Settings() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-white">Settings</h1>
-          <p className="text-gray-400">Customize your trading journal experience</p>
+          <p className="text-gray-400">Customize your Trading Pusthak experience</p>
         </div>
       </div>
 
@@ -311,13 +311,13 @@ export function Settings() {
           </div>
           
           <div className="mt-4 p-4 bg-gray-800 rounded-xl">
-            <h4 className="text-sm font-semibold text-white mb-2">Data Export Includes:</h4>
-            <ul className="text-sm text-gray-300 space-y-1">
-              <li>• All trade entries with psychology data</li>
-              <li>• Psychology journal entries</li>
-              <li>• User settings and preferences</li>
-              <li>• Analytics and performance data</li>
-            </ul>
+                         <h4 className="text-sm font-semibold text-white mb-2">Data Export Includes:</h4>
+             <ul className="text-sm text-gray-300 space-y-1">
+               <li>• All trade entries with psychology data</li>
+               <li>• Psychology pusthak entries</li>
+               <li>• User settings and preferences</li>
+               <li>• Analytics and performance data</li>
+             </ul>
           </div>
         </div>
 

@@ -218,7 +218,7 @@ export function JournalTable() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-white">Trade Journal</h1>
+          <h1 className="text-2xl font-bold text-white">Trade Pusthak</h1>
           <p className="text-gray-400">View and analyze your trading history</p>
         </div>
         <button
