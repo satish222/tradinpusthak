@@ -1,0 +1,129 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  accounts      Account[]
+  sessions      Session[]
+  trades        Trade[]
+  psychologyEntries PsychologyEntry[]
+  settings      UserSettings?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model Trade {
+  id            String   @id @default(cuid())
+  userId        String
+  tradeDate     DateTime
+  segment       String   // Futures/Options
+  instrument    String   // NIFTY, BANKNIFTY, etc.
+  tradeType     String   // Buy/Sell
+  strikePrice   Float?
+  optionType    String?  // CE/PE
+  expiryDate    DateTime?
+  productType   String   // MIS/NRML
+  entryPrice    Float
+  exitPrice     Float?
+  positionSize  Int      // Number of lots
+  stopLoss      Float?
+  target        Float?
+  pnl           Float?   // Auto-calculated
+  strategy      String?
+  tags          String?  // Comma-separated tags
+  screenshot    String?  // URL to uploaded image
+  notes         String?
+  
+  // Psychology fields
+  moodBeforeTrade    String?  // Emoji or mood description
+  confidenceLevel    Int?     // 1-10
+  focusLevel         Int?     // 1-10
+  emotionsFelt       String?  // Comma-separated emotions
+  mistakesMade       String?  // Comma-separated mistakes
+  followedRules      Boolean?
+  disciplineScore    Int?     // 1-10
+  reflectionNotes    String?
+  
+  user               User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+}
+
+model PsychologyEntry {
+  id                    String   @id @default(cuid())
+  userId                String
+  entryDate             DateTime
+  entryType             String   // daily/weekly
+  overallMindset        String?
+  topEmotions           String?  // Comma-separated emotions
+  emotionsImpact        String?
+  weeklyDisciplineRating Int?    // 1-10
+  weeklyImprovementPlan String?
+  notes                 String?
+  
+  user                  User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+}
+
+model UserSettings {
+  id                String   @id @default(cuid())
+  userId            String   @unique
+  defaultInstrument String?  // Default instrument preference
+  defaultProductType String? // Default product type
+  defaultStrategies String?  // Comma-separated default strategies
+  timeFormat        String   @default("12h") // 12h/24h
+  timezone          String   @default("Asia/Kolkata")
+  theme             String   @default("dark") // dark/light
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
